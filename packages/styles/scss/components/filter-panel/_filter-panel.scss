@@ -134,7 +134,8 @@
 
     &:not([has-selections]) {
       .#{$prefix}--clear {
-        display: none;
+        color: $ibm-color__gray-40;
+        cursor: not-allowed;
       }
     }
     @include carbon--breakpoint-down('lg') {
