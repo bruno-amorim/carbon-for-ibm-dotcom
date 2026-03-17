@@ -63,7 +63,10 @@ class C4DMastheadCart extends StableSelectorMixin(LitElement) {
     }
   }
 
-  handleURL(cc: String, lc: String) {
+  handleURL() {
+    const {
+      locale: { cc, lc },
+    } = this;
     switch (cc) {
       case 'uk':
         return `/store/en/gb/checkout`;
@@ -77,16 +80,12 @@ class C4DMastheadCart extends StableSelectorMixin(LitElement) {
   }
 
   render() {
-    const {
-      locale: { cc, lc },
-      linkLabel,
-      handleURL,
-    } = this;
+    const { linkLabel, handleURL } = this;
 
     return html`
       <a
         part="cart-link"
-        href="${handleURL(cc, lc)}"
+        href="${handleURL()}"
         class="${prefix}--header__menu-item ${prefix}--header__menu-title"
         aria-label="${linkLabel}"
         >${ShoppingCart20()}</a
