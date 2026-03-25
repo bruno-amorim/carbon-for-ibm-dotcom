@@ -82,7 +82,6 @@ class C4DMastheadCart extends StableSelectorMixin(LitElement) {
   checkCartWithRetry(retries = 5, delay = 200) {
     const check = () => {
       const hasCart = SAPCommerceAPI.hasActiveCart();
-      console.log(hasCart, 'hasCart 123456');
 
       if (hasCart) {
         this.hasActiveCart = true;
@@ -90,7 +89,6 @@ class C4DMastheadCart extends StableSelectorMixin(LitElement) {
       }
 
       if (retries > 0) {
-        console.log('retries 123456');
         retries--;
         setTimeout(check, delay);
       }
