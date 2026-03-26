@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.47.0](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/compare/@carbon/ibmdotcom-web-components@2.46.0...@carbon/ibmdotcom-web-components@2.47.0) (2026-03-26)
+
+
+### Bug Fixes
+
+* **shopping-cart:** display issue with new handleURL ([#12456](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/issues/12456)) ([2c39c33](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/commit/2c39c338608c0d984464e8c41a82bd3d18c339f3))
+
+
+
+
+
 # [2.46.0](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/compare/@carbon/ibmdotcom-web-components@2.45.0...@carbon/ibmdotcom-web-components@2.46.0) (2026-03-17)
 
 
