@@ -72,6 +72,7 @@ class C4DMastheadCart extends StableSelectorMixin(LitElement) {
    * Updates cart state
    */
   updateCart = () => {
+    console.log('Checking for activeCartId...');
     const hasCart = SAPCommerceAPI.hasActiveCart();
     this.hasActiveCart = hasCart;
   };
