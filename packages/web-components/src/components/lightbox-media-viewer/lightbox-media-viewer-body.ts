@@ -1,7 +1,7 @@
 /**
  * @license
  *
- * Copyright IBM Corp. 2020, 2024
+ * Copyright IBM Corp. 2020, 2026
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -33,6 +33,13 @@ abstract class C4DLightboxMediaViewerBody extends FocusMixin(LitElement) {
    */
   abstract _renderTitle(): TemplateResult | string | void;
 
+  /**
+   * @returns The CTA content.
+   */
+  _renderCTAs(): TemplateResult | string | void {
+    return html`<slot name="cta"></slot>`;
+  }
+
   render() {
     return html`
       <div
@@ -59,6 +66,12 @@ abstract class C4DLightboxMediaViewerBody extends FocusMixin(LitElement) {
                 class="${c4dPrefix}--lightbox-media-viewer__content__desc"
                 data-autoid="${c4dPrefix}--lightbox-media-viewer__content__desc">
                 ${this._renderDescription()}
+              </div>
+              <div
+                part="cta"
+                class="${c4dPrefix}--lightbox-media-viewer__content__cta"
+                data-autoid="${c4dPrefix}--lightbox-media-viewer__content__cta">
+                ${this._renderCTAs()}
               </div>
             </div>
           </div>
