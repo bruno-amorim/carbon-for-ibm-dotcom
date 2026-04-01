@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.49.0](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/compare/@carbon/ibmdotcom-web-components@2.48.0...@carbon/ibmdotcom-web-components@2.49.0) (2026-04-01)
+
+
+### Bug Fixes
+
+* **masthead-cart:** better way to handle carts URL ([#12462](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/issues/12462)) ([261767a](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/commit/261767a9406902c5eb5eecb749b6eede13014fbf))
+* **video-modal:** incorrect video duration display ([#12461](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/issues/12461)) ([11bd64b](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/commit/11bd64bf99e5c5072a0460512babcf7be1aeb46d))
+
+
+### Features
+
+* **light-box-media-viewer:** cta slot ([#12464](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/issues/12464)) ([5ab8d7c](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/commit/5ab8d7cf737e76b99708c202ccedda9c182f94ef))
+
+
+
+
+
 # [2.48.0](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/compare/@carbon/ibmdotcom-web-components@2.47.0...@carbon/ibmdotcom-web-components@2.48.0) (2026-03-26)
 
 
