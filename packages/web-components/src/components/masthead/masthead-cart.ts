@@ -47,71 +47,13 @@ class C4DMastheadCart extends StableSelectorMixin(LitElement) {
 
   connectedCallback() {
     super.connectedCallback();
+    // Check the relevant cookie for whether the user has an active cart.
+    this.hasActiveCart = SAPCommerceAPI.hasActiveCart();
 
-    // Initial check
-    this.updateCart();
-
-    // Fallback retry
-    this.checkCartWithRetry();
-
-    // Listen for cross-tab updates
-    window.addEventListener('storage', this.updateCart);
-
-    // Fetch locale
+    // Fetch the locale for the page.
     LocaleAPI.getLocale().then((locale) => {
       this.locale = locale;
     });
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    window.removeEventListener('storage', this.updateCart);
-  }
-
-  /**
-   * Updates cart state
-   */
-  updateCart = () => {
-    console.log('Checking for activeCartId...');
-    const hasCart = SAPCommerceAPI.hasActiveCart();
-    this.hasActiveCart = hasCart;
-  };
-
-  /**
-   * Checks if the user has an active cart and retries a few times if the cart cookie is not available yet.
-   */
-  checkCartWithRetry(retries = 5, delay = 200) {
-    const check = () => {
-      const hasCart = SAPCommerceAPI.hasActiveCart();
-
-      if (hasCart) {
-        this.hasActiveCart = true;
-        return;
-      }
-
-      if (retries > 0) {
-        retries--;
-        setTimeout(check, delay);
-      }
-    };
-
-    check();
-  }
-
-  /**
-   * Filter the correct checkout URL based on locale and country code.
-   */
-  handleURL(cc: string, lc: string) {
-    switch (cc) {
-      case 'uk':
-        return `/store/en/gb/checkout`;
-      case 'ae':
-        return `/store/en/ae/checkout`;
-      case 'sa':
-        return `/store/en/sa/checkout`;
-      default:
-        return `/store/${lc}/${cc}/checkout`;
-    }
   }
 
   updated(changedProperties) {
@@ -128,10 +70,24 @@ class C4DMastheadCart extends StableSelectorMixin(LitElement) {
       locale: { cc, lc },
     } = this;
 
+    let href;
+
+    if (cc === 'uk') {
+      href = '/store/en/gb/checkout';
+    } else if (cc === 'ae') {
+      href = '/store/en/ae/checkout';
+    } else if (cc === 'sa') {
+      href = '/store/en/sa/checkout';
+    } else {
+      href = `/store/${lc}/${cc}/checkout`;
+    }
+
+    console.log(href);
+
     return html`
       <a
         part="cart-link"
-        href="${this.handleURL(cc, lc)}"
+        href="${href}"
         class="${prefix}--header__menu-item ${prefix}--header__menu-title"
         aria-label="${linkLabel}"
         >${ShoppingCart20()}</a
