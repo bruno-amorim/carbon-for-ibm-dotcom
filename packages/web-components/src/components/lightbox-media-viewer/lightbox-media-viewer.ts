@@ -1,7 +1,7 @@
 /**
  * @license
  *
- * Copyright IBM Corp. 2020, 2024
+ * Copyright IBM Corp. 2020, 2026
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -24,6 +24,7 @@ const { stablePrefix: c4dPrefix } = settings;
  * @element c4d-lightbox-media-viewer
  * @slot title - The title content.
  * @slot description - The description content.
+ * @slot cta - The CTA content.
  * @csspart container - The wrapper around the lightbox media. Usage: `c4d-lightbox-video-player::part(container)`
  * @csspart row - The wrapper around the row. Usage: `c4d-lightbox-video-player::part(row)`
  * @csspart media - The wrapper around media. Usage: `c4d-lightbox-video-player::part(media)`
@@ -53,6 +54,10 @@ class C4DLightboxMediaViewer extends C4DLightboxMediaViewerBody {
         ><h2 part="h2" style="all: inherit;">${title}</h2></slot
       >
     `;
+  }
+
+  _renderCTAs() {
+    return html` <slot name="cta"></slot> `;
   }
 
   private _mediaItem?: HTMLElement;
