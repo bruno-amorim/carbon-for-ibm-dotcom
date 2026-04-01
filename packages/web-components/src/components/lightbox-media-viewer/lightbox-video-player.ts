@@ -1,7 +1,7 @@
 /**
  * @license
  *
- * Copyright IBM Corp. 2020, 2024
+ * Copyright IBM Corp. 2020, 2026
  *
  * This source code is licensed under the Apache-2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -60,14 +60,34 @@ class C4DLightboxVideoPlayer extends C4DLightboxMediaViewerBody {
   }
 
   _renderTitle() {
-    const { duration, formatCaption, formatDuration, name } = this;
+    const { duration, formatCaption, name } = this;
+
+    let formattedDuration = '';
+
+    if (duration != null) {
+      const totalSeconds = Math.floor(duration);
+
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      if (hours > 0) {
+        // format as HH:MM:SS
+        formattedDuration = `${hours}:${String(minutes).padStart(
+          2,
+          '0'
+        )}:${String(seconds).padStart(2, '0')}`;
+      } else {
+        // formatt as MM:SS
+        formattedDuration = `${minutes}:${String(seconds).padStart(2, '0')}`;
+      }
+    }
+
     return html`
       <slot name="title">
         <h2 style="all: inherit;" part="h2">
           ${formatCaption({
-            duration: formatDuration({
-              duration: !duration ? duration : duration * 1000,
-            }),
+            duration: formattedDuration,
             name,
           })}
         </h2>
