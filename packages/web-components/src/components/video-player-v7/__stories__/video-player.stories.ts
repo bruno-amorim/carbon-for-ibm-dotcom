@@ -103,6 +103,47 @@ export const autoplayMuted = (args) => {
   `;
 };
 
+export const transparentBackground = (args) => {
+  const { caption, hideCaption, thumbnail, videoId } = args?.VideoPlayer ?? {};
+  return html`
+    <style>
+      c4d-video-player-container-v7[background-mode] {
+        display: block;
+        aspect-ratio: 16/9;
+        outline: 2px solid red;
+      }
+    </style>
+    <c4d-video-player-container-v7
+      playerMode="background"
+      video-id=${videoId}
+      caption=${caption}
+      ?hide-caption=${hideCaption}
+      thumbnail=${thumbnail}></c4d-video-player-container-v7>
+  `;
+};
+
+export const ambient = (args) => {
+  const { caption, hideCaption, thumbnail, videoId } = args?.VideoPlayer ?? {};
+  return html`
+    <style>
+      c4d-video-player-container-v7[background-mode] {
+        display: block;
+        aspect-ratio: 16/9;
+        outline: 2px solid red;
+      }
+    </style>
+    <c4d-video-player-container-v7
+      playerMode="background"
+      autoplay="true"
+      muted="true"
+      loop="true"
+      video-id=${videoId}
+      caption=${caption}
+      ?hide-caption=${hideCaption}
+      thumbnail=${thumbnail}></c4d-video-player-container-v7>
+  `;
+};
+
 export const intersectionMode = (args) => {
   const {
     aspectRatio,
@@ -209,6 +250,62 @@ autoplay.story = {
 
 autoplayMuted.story = {
   name: 'Autoplay muted',
+  parameters: {
+    knobs: {
+      VideoPlayer: () => {
+        return {
+          aspectRatio: '4x3',
+          caption: text('Custom caption (caption):', ''),
+          hideCaption: boolean('Hide caption (hideCaption):', false),
+          thumbnail: text('Custom thumbnail (thumbnail):', ''),
+          videoId: '1_p2osmd1z',
+        };
+      },
+    },
+    propsSet: {
+      default: {
+        VideoPlayer: {
+          aspectRatio: '4x3',
+          caption: '',
+          hideCaption: false,
+          thumbnail: '',
+          videoId: '1_p2osmd1z',
+        },
+      },
+    },
+  },
+};
+
+transparentBackground.story = {
+  name: 'Transparent background',
+  parameters: {
+    knobs: {
+      VideoPlayer: () => {
+        return {
+          aspectRatio: '4x3',
+          caption: text('Custom caption (caption):', ''),
+          hideCaption: boolean('Hide caption (hideCaption):', false),
+          thumbnail: text('Custom thumbnail (thumbnail):', ''),
+          videoId: '1_p2osmd1z',
+        };
+      },
+    },
+    propsSet: {
+      default: {
+        VideoPlayer: {
+          aspectRatio: '4x3',
+          caption: '',
+          hideCaption: false,
+          thumbnail: '',
+          videoId: '1_p2osmd1z',
+        },
+      },
+    },
+  },
+};
+
+ambient.story = {
+  name: 'Ambient',
   parameters: {
     knobs: {
       VideoPlayer: () => {
