@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.50.0-rc.0](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/compare/@carbon/ibmdotcom-web-components@2.49.0...@carbon/ibmdotcom-web-components@2.50.0-rc.0) (2026-04-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @carbon/motion to v11.43.0 ([#12447](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/issues/12447)) ([8989767](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/commit/8989767f3bf75a982ccd9cc759e6f6536af5cc43))
+* **deps:** update dependency @carbon/type to v11.56.0 ([#12448](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/issues/12448)) ([a81b2cb](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/commit/a81b2cb6b87cbade8f0039af291545f12b84b30d))
+
+
+### Features
+
+* **lightbox-media-player | background-media:** update to use kaltura player v7 ([#12475](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/issues/12475)) ([58a6340](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/commit/58a6340db03813f29813053600a67474bf6b2fb8))
+
+
+
+
+
 # [2.49.0](https://github.com/carbon-design-system/carbon-for-ibm-dotcom/compare/@carbon/ibmdotcom-web-components@2.48.0...@carbon/ibmdotcom-web-components@2.49.0) (2026-04-01)
 
 
