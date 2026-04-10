@@ -83,6 +83,9 @@ class NoticeChoice extends StableSelectorMixin(LitElement) {
   @property({ type: String, attribute: 'custom-notice-text' })
   customNoticeText = '';
 
+  @property({ type: String, attribute: 'pref-type' })
+  prefType = '';
+
   /**
    * End properties for passed attributes.
    */
@@ -201,6 +204,7 @@ class NoticeChoice extends StableSelectorMixin(LitElement) {
     ['EMAIL_NOTICE_ONLY', 'EMAIL_NOTICE_ONLY'],
     ['PHONE_NOTICE_ONLY', 'PHONE_NOTICE_ONLY'],
     ['NC_HIDDEN_PHONE_NONE', 'NC_HIDDEN_PHONE_NONE'],
+    ['NC_PREF_TYPE', 'NC_PREF_TYPE'],
   ]);
 
   connectedCallback() {
@@ -283,12 +287,21 @@ class NoticeChoice extends StableSelectorMixin(LitElement) {
         );
         return;
       }
-      case 'showCustomNotice':
+      case 'showCustomNotice': {
         if (oldValue !== value && typeof value === 'string') {
           this.showCustomNotice = JSON.parse(value) || false;
         }
         return;
+      }
+      case 'prefType': {
+        if (oldValue != value) {
+          const newValue = value !== '' ? (value as string) : 'IBM';
+          console.log('prefType changed', '==>', newValue);
+          this._onChange('NC_PREF_TYPE', newValue);
+        }
 
+        return;
+      }
       default:
         return;
     }
@@ -445,7 +458,15 @@ class NoticeChoice extends StableSelectorMixin(LitElement) {
       this.language = value;
     }
 
-    const langPart = this.language?.split(/[-_]/)[0];
+    const langPart =
+      this.supportedLanguages[this.language?.toLowerCase()] ||
+      this.language
+        ?.split(/[-_]/)
+        .reduce(
+          (found, part) => found || this.supportedLanguages[part.toLowerCase()],
+          undefined
+        ) ||
+      'en';
     this.isLoading = true;
 
     loadSettings(
@@ -549,10 +570,14 @@ class NoticeChoice extends StableSelectorMixin(LitElement) {
   }
 
   private _initSettingsAndContent(language: string) {
-    const [lang] = language.split(/[-_]/);
+    const parts = language.toLowerCase().split(/[-_]/);
+
     const defaultLang =
-      this.supportedLanguages[language?.toLocaleLowerCase()] ||
-      this.supportedLanguages[lang?.toLocaleLowerCase()] ||
+      this.supportedLanguages[language?.toLowerCase()] ||
+      parts.reduce(
+        (found, part) => found || this.supportedLanguages[part],
+        undefined
+      ) ||
       'en';
 
     loadSettings(

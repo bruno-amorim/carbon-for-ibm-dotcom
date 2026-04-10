@@ -43,6 +43,7 @@ const languages = {
   'Spanish (Mexico)': 'es-MX',
   'Turkish [tr]': 'tr',
   'Ukrainian [uk]': 'uk',
+  'Japan [jp-ja]': 'jp-ja',
 };
 const countryList = {
   'United States': 'US',
@@ -141,6 +142,7 @@ const props = () => {
     ),
     environment: select('Environment', environment, 'stage'),
     email: text('Email', ''),
+    prefType: text('Preference Type', ''),
     customNoticeText: customNoticeText,
     showCustomNotice: select(
       'Show Custom Notice Text',
@@ -162,6 +164,7 @@ export const Default = (args) => {
     customNoticeText,
     environment,
     email,
+    prefType,
     showCustomNotice,
   } = args?.NoticeChoice ?? {};
   return html`
@@ -174,6 +177,7 @@ export const Default = (args) => {
       terms-condition-link="${termsConditionLink || ''}"
       hide-error-message="${hideErrorMessages}"
       ?enable-all-opt-in=${enableAllOptIn}
+      pref-type=${prefType}
       custom-notice-text=${customNoticeText}
       show-custom-notice-text=${showCustomNotice}
       environment="${environment}"
