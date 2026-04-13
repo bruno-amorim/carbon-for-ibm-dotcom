@@ -458,15 +458,6 @@ class NoticeChoice extends StableSelectorMixin(LitElement) {
       this.language = value;
     }
 
-    const langPart =
-      this.supportedLanguages[this.language?.toLowerCase()] ||
-      this.language
-        ?.split(/[-_]/)
-        .reduce(
-          (found, part) => found || this.supportedLanguages[part.toLowerCase()],
-          undefined
-        ) ||
-      'en';
     this.isLoading = true;
 
     loadSettings(
@@ -479,7 +470,13 @@ class NoticeChoice extends StableSelectorMixin(LitElement) {
 
         const supportedLang =
           this.supportedLanguages[this.language?.toLowerCase() || ''] ||
-          (langPart && this.supportedLanguages[langPart.toLowerCase()]) ||
+          this.language
+            ?.split(/[-_]/)
+            .reduce(
+              (found, part) =>
+                found || this.supportedLanguages[part.toLowerCase()],
+              undefined
+            ) ||
           'en';
 
         this.loadContentWithFallback(supportedLang);
