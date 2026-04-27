@@ -85,8 +85,6 @@ class C4DMastheadCart extends StableSelectorMixin(LitElement) {
       href = `/store/${lc}/${cc}/checkout`;
     }
 
-    console.log(href);
-
     return html`
       <a
         part="cart-link"
