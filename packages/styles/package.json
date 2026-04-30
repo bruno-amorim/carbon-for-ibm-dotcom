@@ -1,7 +1,7 @@
 {
   "name": "@carbon/ibmdotcom-styles",
   "description": "Carbon for IBM.com Styles",
-  "version": "2.49.0",
+  "version": "2.48.0",
   "license": "Apache-2.0",
   "main": "dist/ibm-dotcom-styles.min.css",
   "module": "src/scss",
@@ -47,6 +47,5 @@
     "require-dir": "^1.2.0",
     "sass": "~1.99.0",
     "sass-loader": "^13.0.0"
-  },
-  "gitHead": "ff7db6c80edd5d814bce42cd1b64df72e0da41d1"
+  }
 }
